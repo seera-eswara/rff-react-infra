@@ -1,0 +1,68 @@
+# Terraform files
+*.tfstate
+*.tfstate.*
+*.tfstate.backup
+.terraform/
+.terraform.lock.hcl
+.tfstate
+
+# Terraform override files
+*.override.tf
+*.override.json
+override.tf
+override.json
+
+# Crash log files
+crash.log
+crash.*.log
+
+# Exclude all .tfvars files, which are likely to contain sensitive data
+*.tfvars
+*.tfvars.json
+
+# Ignore override files as they are usually used to override values locally
+override.tf
+override.json
+*_override.tf
+*_override.json
+
+# Include override files as they are checked in for shared overrides
+!override.tf
+!override.json
+
+# SSH Keys
+.ssh/
+*.pem
+*.key
+
+# IDE / Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+*.iml
+*.sublime-project
+*.sublime-workspace
+
+# OS
+.DS_Store
+Thumbs.db
+.env
+.env.local
+
+# Terraform plan files
+*.tfplan
+*.plan
+
+# Local .terraform directories
+**/.terraform/*
+
+# .tfvars files
+**/*.tfvars
+**/*.tfvars.json
+
+# Ignore CLI configuration files
+.terraformrc
+terraform.rc
