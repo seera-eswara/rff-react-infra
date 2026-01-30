@@ -1,0 +1,23 @@
+# Azure subscription ID - to be populated after subscription creation
+subscription_id = ""
+
+# Resource location
+location = "eastus"
+
+# Cost Tracking
+cost_center = "IT-OPS"
+owner_email = "platform-team@company.com"
+
+# Networking configuration
+vnet_address_space  = "10.10.0.0/16"
+app_subnet_prefix   = "10.10.1.0/24"
+data_subnet_prefix  = "10.10.2.0/24"
+
+# Hub VNet ID for peering - to be provided by platform team
+hub_vnet_id = ""
+
+# Custom tags (will be merged with standard tags from tags module)
+tags = {
+  Project    = "RFF-React"
+  Department = "Engineering"
+}
