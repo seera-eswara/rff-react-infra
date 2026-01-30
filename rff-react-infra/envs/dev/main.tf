@@ -5,7 +5,7 @@ data "azurerm_client_config" "current" {}
 # TAGS - Standardized tagging for all resources
 # ============================================================================
 module "tags" {
-  source = "git::https://github.com/your-org/terraform-azure-modules.git//modules/utility/tags?ref=v1.0.0"
+  source = "git::https://github.com/seera-eswara/terraform-azure-modules.git//modules/utility/tags?ref=v1.0.0"
 
   environment = var.environment
   application = "rff-react"
@@ -21,7 +21,7 @@ module "tags" {
 # RESOURCE GROUP - Foundation with optional lock
 # ============================================================================
 module "resource_group" {
-  source = "git::https://github.com/your-org/terraform-azure-modules.git//modules/utility/resource_group?ref=v1.0.0"
+  source = "git::https://github.com/seera-eswara/terraform-azure-modules.git//modules/utility/resource_group?ref=v1.0.0"
 
   name        = "rg-${var.app_code}-${var.module}-${var.environment}"
   location    = var.location
@@ -35,7 +35,7 @@ module "resource_group" {
 # MONITORING - Log Analytics Workspace
 # ============================================================================
 module "log_analytics" {
-  source = "git::https://github.com/your-org/terraform-azure-modules.git//modules/monitoring/log_analytics_workspace?ref=v1.0.0"
+  source = "git::https://github.com/seera-eswara/terraform-azure-modules.git//modules/monitoring/log_analytics_workspace?ref=v1.0.0"
 
   name                = "law-${var.app_code}-${var.module}-${var.environment}"
   location            = var.location
@@ -50,7 +50,7 @@ module "log_analytics" {
 # NETWORKING - VNet with Subnets (all from modules)
 # ============================================================================
 module "vnet" {
-  source = "git::https://github.com/your-org/terraform-azure-modules.git//modules/networking/vnet?ref=v1.0.0"
+  source = "git::https://github.com/seera-eswara/terraform-azure-modules.git//modules/networking/vnet?ref=v1.0.0"
 
   name                = "vnet-${var.app_code}-${var.module}-${var.environment}"
   location            = var.location
@@ -86,7 +86,7 @@ module "vnet" {
 # NETWORK SECURITY - NSGs with diagnostic settings
 # ============================================================================
 module "nsg_app" {
-  source = "git::https://github.com/your-org/terraform-azure-modules.git//modules/networking/nsg?ref=v1.0.0"
+  source = "git::https://github.com/seera-eswara/terraform-azure-modules.git//modules/networking/nsg?ref=v1.0.0"
 
   name                = "nsg-${var.app_code}-${var.module}-app-${var.environment}"
   location            = var.location
@@ -122,7 +122,7 @@ module "nsg_app" {
 }
 
 module "nsg_data" {
-  source = "git::https://github.com/your-org/terraform-azure-modules.git//modules/networking/nsg?ref=v1.0.0"
+  source = "git::https://github.com/seera-eswara/terraform-azure-modules.git//modules/networking/nsg?ref=v1.0.0"
 
   name                = "nsg-${var.app_code}-${var.module}-data-${var.environment}"
   location            = var.location
@@ -161,7 +161,7 @@ resource "azurerm_subnet_network_security_group_association" "data" {
 # STORAGE - Storage Account with security features
 # ============================================================================
 module "storage_account" {
-  source = "git::https://github.com/your-org/terraform-azure-modules.git//modules/data/storage_account?ref=v1.0.0"
+  source = "git::https://github.com/seera-eswara/terraform-azure-modules.git//modules/data/storage_account?ref=v1.0.0"
 
   name                     = "st${var.app_code}${var.module}${var.environment}"
   location                 = var.location
@@ -183,7 +183,7 @@ module "storage_account" {
 
 # Storage containers for application data
 module "storage_containers" {
-  source   = "git::https://github.com/your-org/terraform-azure-modules.git//modules/utility/storage_container?ref=v1.0.0"
+  source   = "git::https://github.com/seera-eswara/terraform-azure-modules.git//modules/utility/storage_container?ref=v1.0.0"
   for_each = toset(["uploads", "assets", "backups"])
 
   name                  = each.key
@@ -200,7 +200,7 @@ module "storage_containers" {
 # KEY VAULT - Secrets management with RBAC
 # ============================================================================
 module "key_vault" {
-  source = "git::https://github.com/your-org/terraform-azure-modules.git//modules/data/keyvault?ref=v1.0.0"
+  source = "git::https://github.com/seera-eswara/terraform-azure-modules.git//modules/data/keyvault?ref=v1.0.0"
 
   name                = "kv-${var.app_code}-${var.module}-${var.environment}"
   location            = var.location
@@ -228,7 +228,7 @@ module "key_vault" {
 # APPLICATION INSIGHTS - Application monitoring (using module)
 # ============================================================================
 module "application_insights" {
-  source = "git::https://github.com/your-org/terraform-azure-modules.git//modules/monitoring/application_insights?ref=v1.0.0"
+  source = "git::https://github.com/seera-eswara/terraform-azure-modules.git//modules/monitoring/application_insights?ref=v1.0.0"
 
   name                = "appi-${var.app_code}-${var.module}-${var.environment}"
   location            = var.location
