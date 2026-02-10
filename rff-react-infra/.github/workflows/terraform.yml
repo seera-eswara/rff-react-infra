@@ -1,16 +1,5 @@
 name: 'Terraform CI/CD'
 on:
-  pull_request:
-    branches:
-      - master
-    paths:
-      - 'envs/**'
-      - '.github/workflows/terraform.yml'
-  push:
-    branches:
-      - master
-    paths:
-      - 'envs/**'
   workflow_dispatch:
     inputs:
       environment:
