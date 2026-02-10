@@ -8,7 +8,7 @@ on:
       - '.github/workflows/terraform.yml'
   push:
     branches:
-      - main
+      - master
     paths:
       - 'envs/**'
   workflow_dispatch:
